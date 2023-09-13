@@ -10,11 +10,12 @@ import weaviate
 
 
 # Configurations and Setups
-aai.settings.api_key = os.environ.get('AASSEMBLY_API_KEY')
-PAT = os.environ.get('PAT_KEY')
-USER_ID = os.environ.get('USER_ID')
-APP_ID = os.environ.get('APP_ID')
-WORKFLOW_ID = os.environ.get('WORKFLOW_ID')
+secrets = st.secrets["api"]
+aai.settings.api_key = secrets["assemblyai_key"]
+PAT = secrets["clarifai_pat"]
+USER_ID = secrets["user_id"]
+APP_ID = secrets["app_id"]
+WORKFLOW_ID = secrets["workflow_id"]
 
 # Initializing services
 transcriber = aai.Transcriber()
